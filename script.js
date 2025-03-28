@@ -20,7 +20,7 @@ function fetchWeather() {
     const city = document.getElementById("city").value.trim();
     if (!city) return alert("Please enter a city");
 
-    const apiKey = "c37df952585bb9024edc3abe18ed413f";
+    const apiKey = "2e04b12272b1a079c5ec45baee164fa5";
     const url = `http://api.weatherstack.com/current?access_key=${apiKey}&query=${city}`;
 
     fetch(url)
