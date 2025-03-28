@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 const port = process.env.PORT || 3001; // Use port from .env or fallback to 3001
 
 // Start the server and integrate ngrok
-app.listen(port, async () => {
+app.listen(port,'0.0.0.0', async () => {
   console.log(`Server is running on http://localhost:${port}`);
 
   try {
