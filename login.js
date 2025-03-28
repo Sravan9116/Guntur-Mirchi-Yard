@@ -8,7 +8,7 @@ document.getElementById('LoginForm').addEventListener('submit', async function (
 
     try {
         console.log('Sending login request with data:', data);
-        const response = await fetch('http://192.168.137.1:3001/api/users/login', {
+        const response = await fetch('http://localhost:3001/api/users/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
