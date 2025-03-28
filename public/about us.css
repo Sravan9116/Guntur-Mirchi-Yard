@@ -1,0 +1,43 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url(h-7.jpg);
+    background-size: cover;
+    background-position: center;
+ }
+
+.about-container {
+    margin: 20px;
+    padding: 20px;
+    background: whitesmoke;
+    border-radius: 10px;
+    box-shadow: 2px solid rgba(255,255,255,.2);
+    line-height: 1.8;
+    font-family: Arial, sans-serif;
+}
+
+.about-container h1 {
+    font-size: 2rem;
+    color: black;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.about-container p {
+    font-size: 1rem;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.about-container ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.about-container ul li {
+    font-size: 1rem;
+    color:black;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile | Guntur Mirchi</title>
+  <link rel="stylesheet" href="Profile style.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  <link rel="icon" href="assets/mirchi.ico" type="image/x-icon">
+  <link rel="icon" href="assets/mirchi.png" type="image/png">
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "url": "http://localhost/SIH_2024_website/index.html",
+        "logo": "http://localhost/SIH_2024_website/assets/mirchi.png"
+      }
+      </script>
+</head>
+<body>
+  <div class="container">
+    <!-- Form Section -->
+    <div class="form-container" id="form-section">
+      <h2>Enter Your Details</h2>
+      <form id="user-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" required />
+        
+        <label for="bio">Bio:</label>
+        <textarea id="bio" placeholder="Write a short bio" required></textarea>
+        
+        <label for="skills">Occupation:</label>
+        <input type="text" id="skills" placeholder="e.g., Farmer, Buyer, Company,Govt" required />
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email" required />
+        
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" placeholder="Enter your phone number" required />
+        
+        <label for="profile-pic">Profile Picture:</label>
+        <input type="file" id="profile-pic" accept="image/*" required />
+        
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+        <!-- Navbar -->
+        <nav class="navbar">
+          <ul>
+              <li><a href="Main Page.html">Home</a></li>
+              <li><a href="about us.html">About</a></li>
+              <li><a href="Profile.html">Profile</a></li>
+              <li><a href="Contact.html">Contact</a></li>
+          </ul>
+      </nav>
+
+          <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+      <div class="logo-menu">
+          <h2 class="logo">Guntur Mirchi Yard</h2>
+          <i class='bx bx-menu toggle-btn'></i>
+      </div>
+
+      <ul class="list">
+          <li class="list-item active">
+              <a href="Dashboard.html">
+                  <i class='bx bx-grid-alt'></i>
+                  <span class="link-name">Dashboard</span>
+              </a>
+          </li>
+          <li class="list-item">
+              <a href="Profile.html">
+                  <i class='bx bxs-user-circle'></i>
+                  <span class="link-name">Profile</span>
+              </a>
+          </li>
+          <li class="list-item">
+              <a href="Farmer.html">
+                  <i class='bx bxs-user-detail'></i>
+                  <span class="link-name">Farmer</span>
+              </a>
+          </li>
+          <li class="list-item">
+              <a href="Buyer.html">
+                  <i class='bx bxs-user-detail'></i>
+                  <span class="link-name">Buyer</span>
+              </a>
+          </li>
+          <li class="list-item">
+              <a href="Company.html">
+                  <i class='bx bxs-user-detail'></i>
+                  <span class="link-name">Company</span>
+              </a>
+          </li>
+          <li class="list-item">
+              <a href="GOVT.html">
+                  <i class='bx bxs-user-detail'></i>
+                  <span class="link-name">Government</span>
+              </a>
+          </li>
+          <li class="list-item">
+              <a href="#">
+                  <i class='bx bx-history'></i>
+                  <span class="link-name">History</span>
+              </a>
+          </li>
+          <li class="list-item">
+              <a href="Settings.html">
+                  <i class='bx bx-cog'></i>
+                  <span class="link-name">Settings</span>
+              </a>
+          </li>
+      </ul>
+  </nav>
+  <script src="Profile script.jsx"></script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shops in Guntur Mirchi Yard</title>
+    <link rel="stylesheet" href="fam buy link style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Shops in Guntur Mirchi Yard</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Shop No</th>
+                    <th>Shop Name</th>
+                    <th>Member Name</th>
+                    <th>Phone Number</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="shopList">
+                <!-- Data will be loaded dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <nav class="sidebar" aria-label="Main Navigation">
+        <div class="logo-menu">
+            <h2 class="logo">Guntur Mirchi Yard</h2>
+            <i class='bx bx-menu toggle-btn' aria-label="Toggle Sidebar"></i>
+        </div>
+        <ul class="list">
+            <li class="list-item active">
+                <a href="Dashboard.html">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link-name">Dashboard</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="Profile.html">
+                    <i class='bx bxs-user-circle'></i>
+                    <span class="link-name">Profile</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="Farmer.html">
+                    <i class='bx bxs-user-detail'></i>
+                    <span class="link-name">Farmer</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="Buyer.html">
+                    <i class='bx bxs-user-detail'></i>
+                    <span class="link-name">Buyer</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="Company.html">
+                    <i class='bx bxs-spreadsheet'></i>
+                    <span class="link-name">Daily Sheets</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="#">
+                    <i class='bx bx-history'></i>
+                    <span class="link-name">History</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="#">
+                    <i class='bx bx-cog'></i>
+                    <span class="link-name">Settings</span>
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+    <script>
+        // Side Bar Active
+        const sidebar = document.querySelector('.sidebar');
+        const toggleBtn = document.querySelector('.toggle-btn');
+
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+            });
+        }
+
+    </script>
+
+    <nav class="navbar" aria-label="Secondary Navigation">
+        <div class="navdiv">
+            <ul>
+                <li><a href="Main Page.html">Home</a></li>
+                <li><a href="about us.html">About</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="Profile.html">Profile</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <script>
+        const shops = [
+            { shopNo: 101, name: "Sai Traders", member: "Ramesh", phone: "9876543210" },
+            { shopNo: 102, name: "Lakshmi Mirchi", member: "Suresh", phone: "9123456789" },
+            { shopNo: 103, name: "Gopi Spices", member: "Gopi", phone: "9543216780" },
+            { shopNo: 101, name: "Sai Traders", member: "Ramesh", phone: "9876543210" },
+            { shopNo: 102, name: "Lakshmi Mirchi", member: "Suresh", phone: "9123456789" },
+            { shopNo: 103, name: "Gopi Spices", member: "Gopi", phone: "9543216780" },
+            { shopNo: 101, name: "Sai Traders", member: "Ramesh", phone: "9876543210" },
+            { shopNo: 102, name: "Lakshmi Mirchi", member: "Suresh", phone: "9123456789" },
+            { shopNo: 103, name: "Gopi Spices", member: "Gopi", phone: "9543216780" },
+            { shopNo: 101, name: "Sai Traders", member: "Ramesh", phone: "9876543210" },
+            { shopNo: 102, name: "Lakshmi Mirchi", member: "Suresh", phone: "9123456789" },
+            { shopNo: 103, name: "Gopi Spices", member: "Gopi", phone: "9543216780" },
+            { shopNo: 101, name: "Sai Traders", member: "Ramesh", phone: "9876543210" },
+            { shopNo: 102, name: "Lakshmi Mirchi", member: "Suresh", phone: "9123456789" },
+            { shopNo: 103, name: "Gopi Spices", member: "Gopi", phone: "9543216780" },
+            { shopNo: 101, name: "Sai Traders", member: "Ramesh", phone: "9876543210" },
+            { shopNo: 102, name: "Lakshmi Mirchi", member: "Suresh", phone: "9123456789" },
+            { shopNo: 103, name: "Gopi Spices", member: "Gopi", phone: "9543216780" },
+            { shopNo: 101, name: "Sai Traders", member: "Ramesh", phone: "9876543210" },
+            { shopNo: 102, name: "Lakshmi Mirchi", member: "Suresh", phone: "9123456789" },
+            { shopNo: 103, name: "Gopi Spices", member: "Gopi", phone: "9543216780" },
+            { shopNo: 101, name: "Sai Traders", member: "Ramesh", phone: "9876543210" },
+            { shopNo: 102, name: "Lakshmi Mirchi", member: "Suresh", phone: "9123456789" },
+            { shopNo: 103, name: "Gopi Spices", member: "Gopi", phone: "9543216780" },
+            { shopNo: 101, name: "Sai Traders", member: "Ramesh", phone: "9876543210" },
+            { shopNo: 102, name: "Lakshmi Mirchi", member: "Suresh", phone: "9123456789" },
+            { shopNo: 103, name: "Gopi Spices", member: "Gopi", phone: "9543216780" },
+        ];
+
+        const shopList = document.getElementById("shopList");
+        let selectedShop = null;
+
+        function linkShop(shopNo, button, name, member, phone) {
+            if (selectedShop) {
+                alert("You have already selected a shop!");
+                return;
+            }
+
+            const confirmSelection = confirm(`Are you sure you want to select shop number ${shopNo}?`);
+            if (confirmSelection) {
+                selectedShop = shopNo;
+
+                // Store selected shop details
+                localStorage.setItem("selectedShop", JSON.stringify({ shopNo, name, member, phone }));
+
+                // Disable all buttons except the selected one
+                document.querySelectorAll("button").forEach(btn => {
+                    if (btn !== button) btn.disabled = true;
+                });
+
+                // Redirect to the next page
+                window.location.href = "read weight.html";
+            }
+        }
+
+        // Populate table with shop data
+        shops.forEach(shop => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+            <td>${shop.shopNo}</td>
+            <td>${shop.name}</td>
+            <td>${shop.member}</td>
+            <td>${shop.phone}</td>
+            <td><button onclick="linkShop(${shop.shopNo}, this, '${shop.name}', '${shop.member}', '${shop.phone}')">Link</button></td>
+        `;
+            shopList.appendChild(row);
+        });    </script>
+</body>
+
+</html>

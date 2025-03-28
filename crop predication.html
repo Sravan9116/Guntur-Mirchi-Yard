@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Crop.css">
+    <title>Crop Prediction</title>
+    <link rel="icon" href="assets/mirchi.ico" type="image/x-icon">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="icon" href="assets/mirchi.png" type="image/png">
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "url": "http://localhost/SIH_2024_website/index.html",
+          "logo": "http://localhost/SIH_2024_website/assets/mirchi.png"
+        }
+        </script>
+        
+</head>
+<body>
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo-menu">
+                <h2 class="logo">Guntur Mirchi Yard</h2>
+                <i class='bx bx-menu toggle-btn'></i>
+            </div>
+    
+            <ul class="list">
+                <li class="list-item active">
+                    <a href="Dashboard.html">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="link-name">Dashboard</span>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="Profile.html">
+                        <i class='bx bxs-user-circle'></i>
+                        <span class="link-name">Profile</span>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="Farmer.html">
+                        <i class='bx bxs-user-detail'></i>
+                        <span class="link-name">Farmer</span>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="Buyer.html">
+                        <i class='bx bxs-user-detail'></i>
+                        <span class="link-name">Buyer</span>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="Company.html">
+                        <i class='bx bxs-user-detail'></i>
+                        <span class="link-name">Company</span>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="GOVT.html">
+                        <i class='bx bxs-user-detail'></i>
+                        <span class="link-name">Government</span>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="#">
+                        <i class='bx bx-history'></i>
+                        <span class="link-name">History</span>
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="Settings.html">
+                        <i class='bx bx-cog'></i>
+                        <span class="link-name">Settings</span>
+                    </a>
+                </li>
+            </ul>
+            <script>
+                const sidebar = document.querySelector('.sidebar'); // Use the correct selector
+const toggleBtn = document.querySelector('.toggle-btn');
+
+toggleBtn.addEventListener('click', () => {
+  sidebar.classList.toggle('active');
+});
+</script>
+        </nav>
+    
+        <!-- Navbar -->
+        <nav class="navbar">
+            <ul>
+                <li><a href="Main Page.html">Home</a></li>
+                <li><a href="about us.html">About</a></li>
+                <li><a href="Profile.html">Profile</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- Prediction table-->
+    <div class="prediction-container">
+        <h1>Crop Prediction Based on Weather</h1>
+        <div class="weather-result">
+            <h2 id="cityName"></h2>
+            <p id="temperature"></p>
+            <p id="description"></p>
+        </div>
+        <h2>Mirchi Crop Prediction:</h2>
+        <table class="prediction-table">
+            <thead>
+                <tr>
+                    <th>Session</th>
+                    <th>Weather Condition</th>
+                    <th>Predicted Yield</th>
+                    <th>Red Mirchi Types</th>
+                </tr>
+            </thead>
+            <tbody id="predictionTable">
+                <!-- Predictions will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Get weather data from sessionStorage
+        const weatherData = JSON.parse(sessionStorage.getItem("weatherData"));
+
+        // Display weather data on the page
+        document.getElementById("cityName").innerText = `City: ${weatherData.location.name}`;
+        document.getElementById("temperature").innerText = `Temperature: ${weatherData.current.temperature}°C`;
+        document.getElementById("description").innerText = `Description: ${weatherData.current.weather_descriptions[0]}`;
+
+        // Get crop prediction based on weather data
+        getCropPrediction(weatherData.current.temperature, weatherData.current.weather_descriptions[0]);
+
+        // Function to handle crop prediction based on weather data
+        function getCropPrediction(temperature, weatherDescription) {
+            let session = "";
+            let weatherCondition = "";
+            let prediction = "";
+            let mirchiTypes = [];
+
+            if (temperature >= 25 && temperature <= 35) {
+                session = "Summer";
+                weatherCondition = "Normal";
+                prediction = "మొత్తం ఉత్పత్తి";  // Medium Yield
+                mirchiTypes = ["Teja", "Guntur Sannam"];
+            } else if (temperature > 20 && weatherDescription.includes("Rain")) {
+                session = "Rainy";
+                weatherCondition = "Normal";
+                prediction = "ఉత్తమ ఉత్పత్తి";  // High Yield
+                mirchiTypes = ["S10", "Teja", "Byadgi"];
+            } else if (temperature < 20) {
+                session = "Winter";
+                weatherCondition = "Below Average";
+                prediction = "తక్కువ ఉత్పత్తి";  // Low Yield
+                mirchiTypes = ["Kashmiri", "Longi"];
+            } else {
+                session = "Uncertain";
+                weatherCondition = "Unknown";
+                prediction = "సాధారణ ఉత్పత్తి";  // Average Yield
+                mirchiTypes = ["Teja", "S10"];
+            }
+
+            // Insert prediction data into the table
+            const table = document.getElementById('predictionTable');
+            const newRow = table.insertRow();
+            newRow.insertCell(0).textContent = session;
+            newRow.insertCell(1).textContent = weatherCondition;
+            newRow.insertCell(2).textContent = prediction;
+            newRow.insertCell(3).textContent = mirchiTypes.join(", ");
+        }
+    </script>
+</body>
+</html>

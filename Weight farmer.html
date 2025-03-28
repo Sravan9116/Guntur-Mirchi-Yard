@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weighing & Pricing</title>
+    <link rel="stylesheet" href="Weight farmer.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Left-Side Shop Details & Pricing -->
+        <div class="details-container">
+            <h2>Weighing & Pricing</h2>
+            <div id="shopDetails"></div>
+            <p><strong>Mirchi Type:</strong> <span id="mirchiType"></span></p>
+            <p><strong>Rate per kg:</strong> ₹<span id="rate">0</span></p>
+            <p><strong>Total Price:</strong> ₹<span id="totalPrice">0</span></p>
+            <button id="connectButton">Connect Weighing Machine</button>
+        </div>
+
+        <!-- Large Weight Display (Centered) -->
+        <div class="weight-display" id="weight">0</div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const mirchiRates = {
+                "teja": 200,
+                "guntur sannam": 250,
+                "byadgi": 180
+            };
+
+            // Get the current Farmer ID
+            const userid = localStorage.getItem("currentFarmerID");
+
+            // Retrieve the mirchi type for the specific Farmer ID
+            const cropType = localStorage.getItem(`mirchiType_${userid}`) || "Unknown";
+
+            // Update the UI with the crop type and rate
+            document.getElementById("mirchiType").innerText = cropType;
+            document.getElementById("rate").innerText = mirchiRates[cropType] || "N/A";
+
+            // Shop Details
+            const shopData = JSON.parse(localStorage.getItem("selectedShop"));
+            if (shopData) {
+                document.getElementById("shopDetails").innerHTML = `
+            <p><strong>Shop No:</strong> ${shopData.shopNo}</p>
+            <p><strong>Shop Name:</strong> ${shopData.name}</p>
+            <p><strong>Member Name:</strong> ${shopData.member}</p>
+            <p><strong>Phone:</strong> ${shopData.phone}</p>
+        `;
+            } else {
+                document.getElementById("shopDetails").innerHTML = "<p>No shop selected.</p>";
+            }
+
+            // Weighing Machine Connection
+            let port;
+            document.getElementById("connectButton").addEventListener("click", async () => {
+                try {
+                    port = await navigator.serial.requestPort();
+                    await port.open({ baudRate: 9600 });
+
+                    const reader = port.readable.getReader();
+                    while (true) {
+                        const { value, done } = await reader.read();
+                        if (done) {
+                            console.log("Serial disconnected");
+                            break;
+                        }
+                        const weight = new TextDecoder().decode(value).trim();
+                        if (!isNaN(weight)) {
+                            updatePrice(parseFloat(weight));
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error connecting to weighing machine:", error);
+                }
+            });
+
+            function updatePrice(weight) {
+                const rate = mirchiRates[cropType];
+                const totalPrice = weight * rate;
+
+                document.getElementById("weight").innerText = weight;
+                document.getElementById("totalPrice").innerText = totalPrice;
+            }
+        });
+    </script>
+</body>
+
+</html>

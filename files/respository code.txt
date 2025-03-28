@@ -1,0 +1,52 @@
+const User = require('../models/UserModel'); // Import the Sequelize model
+
+// Repository function to create a new user
+const createUser = async (userData) => {
+  try {
+    console.log('Received userData:', userData); // Log the input data (remove in production)
+    const user = await User.create(userData);
+    console.log('User created successfully:', user); // Log the output (remove in production)
+    // Remove sensitive data (password) before returning
+    const { password, ...userWithoutPassword } = user.dataValues;
+    return userWithoutPassword;
+  } catch (error) {
+    console.error('Error saving user to the database:', error); // Log the exact error
+    throw new Error('Error saving user to the database');
+  }
+};
+
+// Repository function to get a user by ID
+const getUserById = async (userId) => {
+  try {
+    const user = await User.findOne({
+      where: { id: userId },
+    });
+    // Remove sensitive data before returning
+    if (user) {
+      const { password, ...userWithoutPassword } = user.dataValues;
+      return userWithoutPassword;
+    }
+    return null; // Return null if no user found
+  } catch (error) {
+    console.error('Error fetching user from the database:', error);
+    throw new Error('Error fetching user from the database');
+  }
+};
+
+// Repository function to get a user by username
+const getUserByUsername = async (username) => {
+  try {
+    const user = await User.findOne({
+      where: { username },
+    });
+    if (user) {
+      console.log('Fetched User from Database:', user); // Log the full user object
+      return user; // Return the full user object (including password)
+    }
+  } catch (error) {
+    console.error('Error fetching user by username from the database:', error);
+    throw new Error('Error fetching user by username from the database');
+  }
+};
+
+module.exports = { createUser, getUserById, getUserByUsername };

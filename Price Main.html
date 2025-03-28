@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weight Machine Display</title>
+  <link rel="icon" href="assets/mirchi.ico" type="image/x-icon">
+  <link rel="icon" href="assets/mirchi.png" type="image/png">
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "url": "http://localhost/SIH_2024_website/index.html",
+        "logo": "http://localhost/SIH_2024_website/assets/mirchi.png"
+      }
+      </script>
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+    }
+    .display-container {
+      text-align: center;
+      padding: 20px;
+      background: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+    }
+    .price-display {
+      font-size: 60px;
+      color: #007BFF;
+      font-weight: bold;
+    }
+    .rate-info {
+      font-size: 18px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="display-container">
+    <div class="rate-info">Rate per Kg: ₹100</div>
+    <div class="price-display" id="price">₹0.00</div>
+  </div>
+
+  <script>
+    async function fetchPrice() {
+      try {
+        const response = await fetch('/api/price');
+        const data = await response.json();
+        document.getElementById('price').textContent = `₹${data.price}`;
+      } catch (error) {
+        console.error('Error fetching price:', error);
+      }
+    }
+
+    // Fetch price every second
+    setInterval(fetchPrice, 1000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatiable" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyer Form in HTML and CSS | Guntur Mirchi Yard</title>
+    <link rel="stylesheet" href="buy style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="assets/mirchi.ico" type="image/x-icon">
+    <link rel="icon" href="assets/mirchi.png" type="image/png">
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "url": "http://localhost/SIH_2024_website/index.html",
+          "logo": "http://localhost/SIH_2024_website/assets/mirchi.png"
+        }
+    </script>
+</head>
+
+<body>
+    <nav class="sidebar" aria-label="Sidebar Navigation">
+        <div class="logo-menu">
+            <h2 class="logo"> Guntur Mirchi Yard</h2>
+            <i class='bx bx-menu toggle-btn'></i>
+        </div>
+
+        <ul class="list">
+            <li class="list-item active">
+                <a href="Dashboard.html">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link-name link-name-1">Dashboard</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="Profile.html">
+                    <i class='bx bxs-user-circle'></i>
+                    <span class="link-name link-name-2">Profile</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="Farmer.html">
+                    <i class='bx bxs-user-detail'></i>
+                    <span class="link-name link-name-3">Farmer</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="Company.html">
+                    <i class='bx bxs-user-detail'></i>
+                    <span class="link-name link-name-4">Company</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="#">
+                    <i class='bx bxs-spreadsheet'></i>
+                    <span class="link-name link-name-5">Daily Sheets</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="#">
+                    <i class='bx bx-history'></i>
+                    <span class="link-name link-name-6">History</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="#">
+                    <i class='bx bx-cog'></i>
+                    <span class="link-name link-name-7">Settings</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <script src="script.js"></script>
+    <div class="wrapper">
+        <h1>Welcome To The Buyer Details</h1>
+        <div class="input-box">
+            <input type="id" placeholder="Enter ID Number" required>
+            <i class='bx bx-id-card'></i>
+        </div>
+        <div class="input-box">
+            <input type="username" placeholder="Shop Name" required>
+            <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-box">
+            <input type="text" placeholder="Shop Number" maxlength="15" required
+                onkeypress="return restrictAlphabets(event)">
+            <i class='bx bx-store'></i>
+        </div>
+        <div class="input-box">
+            <input type="text" placeholder="Govt ID" maxlength="15" required
+                onkeypress="return restrictAlphabets(event)">
+            <i class='bx bxs-castle'></i>
+        </div>
+        <button type="button" class="btn" onclick="validateUser()">Link</button>
+    </div>
+    <script type="text/javascript">
+        function restrictAlphabets(e) {
+            var x = e.which || e.keycode;
+            return (x >= 48 && x <= 57);
+        }
+    </script>
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="navdiv">
+            <ul>
+                <li><a href="Main Page.html">Home</a></li>
+                <li><a href="about us.html">About</a></li>
+                <li><a href="Contact.html">contact</a></li>
+                <li><a href="Profile.html">Profile</a></li>
+            </ul>
+        </div>
+    </nav>
+</body>
+
+</html>

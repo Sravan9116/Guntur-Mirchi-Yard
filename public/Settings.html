@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings | Guntur Mirchi Yard</title>
+    <link rel="stylesheet" href="settings.css">
+    <link rel="icon" href="assets/mirchi.ico" type="image/x-icon">
+    <link rel="icon" href="assets/mirchi.png" type="image/png">
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "url": "http://localhost/SIH_2024_website/index.html",
+          "logo": "http://localhost/SIH_2024_website/assets/mirchi.png"
+        }
+        </script>
+</head>
+
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="logo-menu">
+            <h2 class="logo">Guntur Mirchi Yard</h2>
+        </div>
+        <ul class="list">
+            <li><a href="Dashboard.html">Dashboard</a></li>
+            <li><a href="Profile.html">Profile</a></li>
+            <li><a href="Farmer.html">Farmer</a></li>
+            <li><a href="Buyer.html">Buyer</a></li>
+            <li><a href="Company.html">Company</a></li>
+            <li><a href="GOVT.html">Government</a></li>
+            <li><a href="History.html">History</a></li>
+            <li class="active"><a href="Settings.html">Settings</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Settings Section -->
+    <div class="settings-container">
+        <h1>Website Settings</h1>
+
+        <!-- User Account Settings -->
+        <section class="settings-section">
+            <h2>User Account Settings</h2>
+            <label>Name: <input type="text" id="userName" placeholder="Enter your name"></label>
+            <label>Email: <input type="email" id="userEmail" placeholder="Enter your email"></label>
+            <label>Phone Number: <input type="text" id="userPhone" placeholder="Enter your phone number"></label>
+            <label>Profile Picture: <input type="file" id="profilePicture"></label>
+        </section>
+
+        <!-- Password Management -->
+        <section class="settings-section">
+            <h2>Password Management</h2>
+            <label>Current Password: <input type="password" id="current-password" placeholder="Enter current password"></label>
+            <label>New Password: <input type="password" id="new-password" placeholder="Enter new password"></label>
+            <label>Confirm New Password: <input type="password" id="confirm-password" placeholder="Re-enter new password"></label>
+            <button id="change-password-btn">Update Password</button>
+        </section>
+
+        <!-- Security Settings -->
+        <section class="settings-section">
+            <h2>Security Settings</h2>
+            <label>
+                <input type="checkbox" id="twoFactorAuth">
+                Enable Two-Factor Authentication
+            </label>
+            <label>View Login Activity <button id="view-login-activity">View</button></label>
+        </section>
+
+        <!-- Notification Settings -->
+        <section class="settings-section">
+            <h2>Notification Settings</h2>
+            <label><input type="checkbox" id="emailNotifications"> Email Notifications</label>
+            <label><input type="checkbox" id="smsAlerts"> SMS Alerts</label>
+            <label><input type="checkbox" id="pushNotifications"> Push Notifications</label>
+        </section>
+
+        <!-- Language and Region -->
+        <section class="settings-section">
+            <h2>Language and Region</h2>
+            <label>Preferred Language:
+                <select id="language">
+                    <option value="en">English</option>
+                    <option value="te">Telugu</option>
+                    <option value="hi">Hindi</option>
+                </select>
+            </label>
+            <label>Time Zone: <input type="text" id="timeZone" placeholder="Enter your time zone"></label>
+            <label>Currency: <input type="text" id="currency" placeholder="Enter your currency"></label>
+        </section>
+
+        <!-- Appearance Settings -->
+        <section class="settings-section">
+            <h2>Appearance Settings</h2>
+            <label><input type="radio" name="theme" value="light" checked> Light Theme</label>
+            <label><input type="radio" name="theme" value="dark"> Dark Theme</label>
+            <label>Font Size: <input type="number" id="fontSize" placeholder="Enter font size"></label>
+        </section>
+
+        <!-- Payment and Billing -->
+        <section class="settings-section">
+            <h2>Payment and Billing</h2>
+            <label>Saved Payment Methods: <button id="managePayments">Manage</button></label>
+            <label>Billing Address: <textarea id="billingAddress" placeholder="Enter your billing address"></textarea></label>
+            <label>Transaction History: <button id="viewTransactions">View</button></label>
+        </section>
+
+        <!-- General Settings -->
+        <section class="settings-section">
+            <h2>General Settings</h2>
+            <label>Site Language:
+                <select id="siteLanguage">
+                    <option value="en">English</option>
+                    <option value="te">Telugu</option>
+                    <option value="hi">Hindi</option>
+                </select>
+            </label>
+            <label>Date and Time Format: <input type="text" id="dateTimeFormat" placeholder="Enter format"></label>
+            <label>Custom URL/Permalinks: <input type="text" id="customURL" placeholder="Enter custom URL"></label>
+        </section>
+
+        <button id="save-settings-btn">Save Changes</button>
+    </div>
+
+    <script src="settings.js"></script>
+</body>
+
+</html>

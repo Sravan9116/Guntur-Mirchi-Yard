@@ -1,0 +1,958 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: url('h-7.jpg') no-repeat center center/cover;
+}
+
+/* For Laptops & Desktops */
+@media (min-width: 1024px) {
+  body {
+    background-size: cover;
+    /* Ensures full coverage without stretching */
+    background-position: center center;
+  }
+}
+
+/* For Tablets (Medium Screens) */
+@media (max-width: 1024px) {
+  body {
+    background-size: contain;
+    /* Prevents excessive zoom */
+    background-position: top center;
+  }
+}
+
+/* For Mobile Devices */
+@media (max-width: 768px) {
+  body {
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+/* For Small Mobile Screens */
+@media (max-width: 480px) {
+  body {
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.navbar {
+  background: transparent;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 600;
+  position: fixed;
+  top: 40px;
+  left: 77%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar ul li {
+  display: inline-block;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  font-size: 1rem;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  background-color: #ddd;
+  color: #000;
+}
+
+/* Responsive Design */
+
+/* For tablets and smaller screens */
+@media (max-width: 1024px) {
+  .navbar {
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 10px;
+    /* Decreased gap for smaller screens */
+  }
+
+  .navbar ul {
+    gap: 10px;
+  }
+
+  .navbar ul li a {
+    font-size: 0.9rem;
+    /* Slightly smaller text */
+    padding: 8px 12px;
+    /* Reduced padding */
+  }
+}
+
+/* For mobile screens */
+@media (max-width: 768px) {
+  .navbar {
+    top: 20px;
+    /* Adjust top for mobile screens */
+    left: 55%;
+    transform: translateX(-50%);
+    gap: 5px;
+  }
+
+  .navbar ul {
+    gap: 10px;
+    /* Stack items vertically */
+  }
+
+  .navbar ul li {
+    margin-bottom: 10px;
+    /* Add spacing between items */
+  }
+
+  .navbar ul li a {
+    font-size: 0.9rem;
+    /* Reduce font size for mobile */
+    padding: 8px 12px;
+  }
+}
+
+/* For very small mobile screens */
+@media (max-width: 480px) {
+  .navbar {
+    top: 10px;
+    /* Adjust top for small mobile screens */
+    left: 45%;
+    transform: translateX(-50%);
+    gap: 5px;
+    /* Decrease gap */
+  }
+
+  .navbar ul {
+    gap: 5px;
+  }
+
+  .navbar ul li a {
+    font-size: 0.85rem;
+    /* Even smaller font size */
+    padding: 6px 10px;
+    /* Reduced padding */
+  }
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 6px 14px;
+  transition: .5s;
+}
+
+.sidebar.active {
+  width: 300px;
+}
+
+.sidebar .logo-menu {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 75px;
+}
+
+.sidebar .logo-menu .logo {
+  font-size: 25px;
+  color: #5d1803;
+  pointer-events: none;
+  opacity: 0;
+  transition: .3s;
+}
+
+.sidebar.active .logo-menu .logo {
+  opacity: 1;
+  transition: .2s;
+}
+
+.sidebar .logo-menu .toggle-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.sidebar.active .logo-menu .toggle-btn {
+  left: 90%;
+}
+
+.sidebar .list {
+  margin-top: 10px;
+}
+
+.list .list-item {
+  list-style: none;
+  color: #fff;
+  width: 100%;
+  height: 50px;
+  margin: 5px 0;
+  line-height: 50px;
+}
+
+.list .list-item a {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  white-space: nowrap;
+  transition: .4s;
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.list .list-item a:hover {
+  background: rgba(66, 66, 66, 0.2);
+}
+
+.list .list-item a i {
+  min-width: 50px;
+  display: flex;
+  height: 50px;
+  text-align: center;
+  color: #fff;
+  line-height: 50px;
+}
+
+.sidebar .link-name {
+  font-size: 20px;
+  opacity: 0;
+  pointer-events: none;
+  color: #fff;
+  transition: .3s;
+}
+
+.sidebar.active .link-name {
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: calc(.1s * var(--i));
+}
+
+/* Responsive Styles */
+
+/* For tablets and smaller screens */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 60px;
+    /* Make sidebar more compact on tablets */
+    padding: 6px 10px;
+  }
+
+  .sidebar.active {
+    width: 250px;
+    /* Adjust active width on tablets */
+  }
+
+  .sidebar .logo-menu .logo {
+    font-size: 20px;
+  }
+
+  .sidebar .list .list-item a {
+    font-size: 26px;
+    /* Smaller font size */
+    padding: 0 8px;
+  }
+
+  .sidebar .link-name {
+    font-size: 18px;
+  }
+}
+
+/* For mobile devices */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 50px;
+    /* Further reduce sidebar width on mobile */
+    padding: 6px 8px;
+  }
+
+  .sidebar.active {
+    width: 170px;
+    /* Adjust active width on mobile */
+  }
+
+  .sidebar .logo-menu .logo {
+    font-size: 18px;
+    /* Reduce logo font size */
+  }
+
+  .sidebar .list .list-item a {
+    font-size: 22px;
+    /* Reduce font size */
+    padding: 0 6px;
+  }
+
+  .sidebar .link-name {
+    font-size: 16px;
+  }
+
+  .sidebar .logo-menu .toggle-btn {
+    left: 50%;
+    /* Keep the toggle button position for mobile */
+  }
+}
+
+/* For very small mobile screens */
+@media (max-width: 480px) {
+  .sidebar {
+    width: 40px;
+    /* Further reduce width for small screens */
+    padding: 6px 6px;
+  }
+
+  .sidebar.active {
+    width: 150px;
+    /* Adjust active width on small mobile screens */
+  }
+
+  .sidebar .logo-menu .logo {
+    font-size: 16px;
+    /* Further reduce font size for the logo */
+  }
+
+  .sidebar .list .list-item a {
+    font-size: 18px;
+    /* Further reduce font size */
+    padding: 0 5px;
+  }
+
+  .sidebar .link-name {
+    font-size: 14px;
+  }
+
+  .sidebar .logo-menu .toggle-btn {
+    left: 50%;
+  }
+}
+
+
+/* Weather Container */
+.weather-container {
+  position: absolute;
+  top: 150px;
+  right: 20%;
+  padding: 40px;
+  text-align: center;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.weather-container h1 {
+  font-size: 22px;
+  color: #333;
+}
+
+.search {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search input {
+  padding: 12px;
+  width: 65%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.search button {
+  padding: 12px 15px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search button:hover {
+  background: #0056b3;
+}
+
+.weather-result {
+  margin-top: 15px;
+}
+
+.weather-result h2 {
+  color: #007bff;
+  font-size: 20px;
+}
+
+.weather-result p {
+  color: #555;
+  font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .weather-container {
+    width: 60%;
+    left: 20%;
+    top: 65%;
+  }
+}
+
+@media (max-width: 768px) {
+  .weather-container {
+    position: relative;
+    top: 150px;
+    left: 10px;
+    margin: 0 auto;
+    width: 50%;
+    /* Make weather container take up less width */
+    padding: 30px;
+  }
+
+  .search input {
+    width: 60%;
+    padding: 10px;
+  }
+
+  .search button {
+    padding: 10px 12px;
+  }
+
+  .weather-result h2 {
+    font-size: 18px;
+  }
+
+  .weather-result p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .weather-container {
+    top: 155px;
+    left: 16px;
+    width: 48%;
+    /* Keep it 48% width for small screens to remain side by side */
+    padding: 20px;
+  }
+
+  .search {
+    flex-direction: column;
+  }
+
+  .search input {
+    width: 100%;
+  }
+
+  .search button {
+    width: 100%;
+  }
+}
+
+/* Price Display Box */
+.price-display-box {
+  position: absolute;
+  top: 100px;
+  left: 300px;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 50px 10px 60px 10px;
+  width: 350px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.item-name {
+  font-size: 20px;
+  color: #333;
+  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.item-rate {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+span {
+  font-size: 1rem;
+  color: #666;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Responsive Styles */
+
+/* For Tablets (Medium Screens) */
+@media (max-width: 1024px) {
+  .price-display-box {
+    top: 120px;
+    left: 20%;
+    width: 60%;
+    /* Makes it responsive on tablets */
+    padding: 30px 20px 40px 20px;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  .item-name,
+  .item-rate {
+    font-size: 18px;
+  }
+
+  span {
+    font-size: 0.9rem;
+  }
+}
+
+/* For Mobile Devices */
+@media (max-width: 768px) {
+  .price-display-box {
+    top: 80px;
+    height: auto;
+    left: auto;
+    width: calc(50% - 20px);
+    /* Adjust width to 50% for mobile screens */
+    padding: 20px 15px 30px 15px;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  .item-name,
+  .item-rate {
+    font-size: 16px;
+  }
+
+  span {
+    font-size: 0.9rem;
+  }
+}
+
+/* For Small Mobile Screens */
+@media (max-width: 480px) {
+  .price-display-box {
+    top: 100px;
+    left: 120px;
+    width: calc(50% - 10px);
+    /* Keep them side by side with reduced width for small screens */
+    padding: 15px 10px 20px 10px;
+  }
+
+  h1 {
+    font-size: 1rem;
+  }
+
+  .item-name,
+  .item-rate {
+    font-size: 14px;
+  }
+
+  span {
+    font-size: 0.85rem;
+  }
+}
+
+/* Chatbot Logo */
+.chatbot-logo {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #21a7cd;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.chatbot-logo img {
+  border-radius: 25px;
+  width: 50px;
+  height: 50px;
+}
+
+/* Chatbot Container */
+.chatbot {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 350px;
+  max-height: 500px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  /* Initially hidden */
+  transform: translateY(20px);
+  /* Slide down */
+  transition: all 0.3s ease-in-out;
+  /* Smooth transition */
+  pointer-events: none;
+  /* Prevent interaction when hidden */
+}
+
+.chatbot.show {
+  opacity: 1;
+  /* Fully visible */
+  transform: translateY(0);
+  /* Slide into place */
+  pointer-events: auto;
+  /* Enable interaction */
+}
+
+.chatbot-header {
+  background: #e41414;
+  color: #3dec22;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px 8px 0 0;
+}
+
+.chatbot-header span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.chatbot-header button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Chatbot Messages */
+.chatbot-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-container {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.message-container.user {
+  justify-content: flex-end;
+}
+
+.message-container.bot {
+  justify-content: flex-start;
+}
+
+.message-container img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.message-container.user img {
+  margin-left: 10px;
+  margin-right: 0;
+}
+
+.message {
+  padding: 8px 12px;
+  border-radius: 20px;
+  max-width: 70%;
+}
+
+.message.user {
+  background-color: #4cde17;
+  color: #242424;
+}
+
+.message.bot {
+  background-color: #ffffff;
+  color: #333;
+}
+
+/* Chatbot Input */
+.chatbot-input {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.chatbot-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.chatbot-input button {
+  margin-left: 10px;
+  padding: 10px 15px;
+  background-color: #4cde17;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.chatbot-input button:hover {
+  background-color: #45a049;
+}
+
+.chatbot-bubble {
+  position: fixed;
+  bottom: 120px;
+  /* Above chatbot logo */
+  right: 30px;
+  background: #170235;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 15px;
+  font-size: 14px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  /* Initially hidden */
+  transform: scale(0.9);
+  transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
+  pointer-events: none;
+  /* Prevent interactions */
+}
+
+.show-bubble {
+  opacity: 1;
+  /* Fully visible */
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.scroll-ad {
+  background-color: burlywood;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 10px 0;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  /* Place the ad at the bottom of the page */
+  width: 100%;
+  z-index: 1000;
+  border-top: 2px solid #e64a19;
+  cursor: pointer;
+  /* Make it look clickable */
+}
+
+.scroll-content {
+  display: flex;
+  animation: scroll-left 20s linear infinite;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.scroll-content span {
+  margin-right: 50px;
+  /* Space between scrolling items */
+  color: #000;
+}
+
+/* Keyframes for scrolling effect */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Class to pause the scrolling */
+.scroll-paused {
+  animation-play-state: paused !important;
+}
+
+/* Profile Icon in Top-Right Corner */
+.profile {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  /* Makes the icon circular */
+  background-color: #f1f1f1;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Hover effect for profile icon */
+.profile:hover {
+  transform: scale(1.1);
+  color: #242424;
+}
+
+/* Profile Icon Image */
+.profile img {
+  width: 100%;
+  /* Ensures the image fills the container */
+  height: 100%;
+  border-radius: 50%;
+  /* Makes the image circular */
+  object-fit: cover;
+  /* Ensures the image scales properly */
+}
+
+/* Dropdown Menu */
+.dropdown {
+  position: absolute;
+  /* Positioned relative to the parent container */
+  top: 60px;
+  /* Distance below the profile icon */
+  right: 0;
+  /* Aligns the dropdown with the right edge of the profile */
+  background-color: white;
+  /* Background color of the dropdown */
+  border: 1px solid #ddd;
+  /* Adds a border for distinction */
+  border-radius: 10px;
+  /* Rounded corners for the dropdown */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  /* Shadow for a floating effect */
+  height: auto;
+  width: 200px;
+  /* Set width for the dropdown */
+  display: none;
+  /* Hidden by default */
+  z-index: 1001;
+  /* Keeps the dropdown above other elements */
+}
+
+.dropdown.hidden {
+  display: none;
+  /* Hidden when the 'hidden' class is present */
+}
+
+.dropdown:not(.hidden) {
+  display: block;
+  /* Visible when the 'hidden' class is absent */
+}
+
+.dropdown .profile-info {
+  text-align: center;
+  /* Center-aligns the text inside the dropdown */
+  padding: 10px;
+  /* Padding around the content */
+}
+
+.dropdown .profile-info .dropdown-pic {
+  width: 50px;
+  /* Size of the profile picture inside the dropdown */
+  height: 50px;
+  border-radius: 50%;
+  /* Circular profile picture */
+  margin-bottom: 10px;
+  /* Space below the picture */
+}
+
+.dropdown-btn {
+  display: block;
+  /* Button spans the full width */
+  width: 100%;
+  padding: 10px;
+  /* Padding for clickable area */
+  text-align: left;
+  /* Align text to the left */
+  background-color: white;
+  /* Button background color */
+  border: none;
+  /* Removes border from buttons */
+  cursor: pointer;
+  /* Pointer cursor on hover */
+}
+
+.dropdown-btn:hover {
+  background-color: #f1f1f1;
+  /* Light background on hover */
+}
