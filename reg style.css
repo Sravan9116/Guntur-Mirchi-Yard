@@ -2,7 +2,8 @@
 body {
   background-image: url('h-7.jpg');
   background-size: cover;
-  font-family: Arial, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: larger;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,7 +47,7 @@ input[type="tel"],
 select {
   width: 100%;
   padding: 10px;
-  margin: 5px 0;
+  margin: 2px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;

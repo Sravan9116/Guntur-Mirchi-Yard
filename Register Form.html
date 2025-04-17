@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,77 +18,78 @@
         }
         </script>
 </head>
+
 <body>
 
-            <!-- Navbar -->
-            <nav class="navbar">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="about us.html">About</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="Contact.html">Contact</a></li>
-                </ul>
-            </nav>
-      
-                <!-- Sidebar Navigation -->
-          <nav class="sidebar">
-            <div class="logo-menu">
-                <h2 class="logo">Guntur Mirchi Yard</h2>
-                <i class='bx bx-menu toggle-btn'></i>
-            </div>
-      
-            <ul class="list">
-                <li class="list-item active">
-                    <a href="#">
-                        <i class='bx bx-grid-alt'></i>
-                        <span class="link-name">Dashboard</span>
-                    </a>
-                </li>
-                <li class="list-item">
-                    <a href="#">
-                        <i class='bx bxs-user-circle'></i>
-                        <span class="link-name">Profile</span>
-                    </a>
-                </li>
-                <li class="list-item">
-                    <a href="#">
-                        <i class='bx bxs-user-detail'></i>
-                        <span class="link-name">Farmer</span>
-                    </a>
-                </li>
-                <li class="list-item">
-                    <a href="#">
-                        <i class='bx bxs-user-detail'></i>
-                        <span class="link-name">Buyer</span>
-                    </a>
-                </li>
-                <li class="list-item">
-                    <a href="#">
-                        <i class='bx bxs-user-detail'></i>
-                        <span class="link-name">Company</span>
-                    </a>
-                </li>
-                <li class="list-item">
-                    <a href="#">
-                        <i class='bx bxs-user-detail'></i>
-                        <span class="link-name">Government</span>
-                    </a>
-                </li>
-                <li class="list-item">
-                    <a href="#">
-                        <i class='bx bx-history'></i>
-                        <span class="link-name">History</span>
-                    </a>
-                </li>
-                <li class="list-item">
-                    <a href="#">
-                        <i class='bx bx-cog'></i>
-                        <span class="link-name">Settings</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-      
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="about us.html">About</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="logo-menu">
+            <h2 class="logo">Guntur Mirchi Yard</h2>
+            <i class='bx bx-menu toggle-btn'></i>
+        </div>
+
+        <ul class="list">
+            <li class="list-item active">
+                <a href="#">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link-name">Dashboard</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="#">
+                    <i class='bx bxs-user-circle'></i>
+                    <span class="link-name">Profile</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="#">
+                    <i class='bx bxs-user-detail'></i>
+                    <span class="link-name">Farmer</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="#">
+                    <i class='bx bxs-user-detail'></i>
+                    <span class="link-name">Buyer</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="#">
+                    <i class='bx bxs-user-detail'></i>
+                    <span class="link-name">Company</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="#">
+                    <i class='bx bxs-user-detail'></i>
+                    <span class="link-name">Government</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="#">
+                    <i class='bx bx-history'></i>
+                    <span class="link-name">History</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="#">
+                    <i class='bx bx-cog'></i>
+                    <span class="link-name">Settings</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
     <div class="form-container">
         <h3>Guntur Mirchi Yard Registration</h3>
         <form id="registerForm" action="http://localhost:3001/api/users/register" method="POST">
@@ -99,19 +101,21 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><label for="username">Username</label></td>
-                        <td><input type="text" id="username" name="username" placeholder="Enter your username" required></td>
+                        <td><label for="username">Username:</label></td>
+                        <td><input type="text" id="username" name="username" placeholder="Enter your username" required>
+                        </td>
                     </tr>
                     <tr>
-                        <td><label for="password">Password</label></td>
-                        <td><input type="password" id="password" name="password" placeholder="Enter your password" required></td>
+                        <td><label for="password">Password:</label></td>
+                        <td><input type="password" id="password" name="password" placeholder="Enter your password"
+                                required></td>
                     </tr>
                     <tr>
-                        <td><label for="email">Email</label></td>
+                        <td><label for="email">Email:</label></td>
                         <td><input type="email" id="email" name="email" placeholder="Enter your email" required></td>
-                    </tr> 
+                    </tr>
                     <tr>
-                        <td><label for="phone_code">Phone Code</label></td>
+                        <td><label for="phone_code">Phone Code:</label></td>
                         <td>
                             <select id="phone_code" name="phone_code" required>
                                 <option value="+1">+1 (USA)</option>
@@ -121,23 +125,29 @@
                             </select>
                         </td>
                     </tr>
-                    
+
                     <tr>
-                        <td><label for="phone">Phone Number</label></td>
+                        <td><label for="phone">Phone Number:</label></td>
                         <td><input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
-                        <button type="button" id="sendOtp">Send OTP</button>
-                    </td>
+                            <button type="button" id="sendOtp">Send OTP</button>
+                        </td>
                     <tr>
                         <td colspan="2">
                             <div id="otpSection" class="otp-container">
                                 <p>Enter OTP:</p>
                                 <div class="otp-boxes">
-                                    <input type="text" class="otp-box" maxlength="1" aria-label="First OTP digit" placeholder="0">
-                                    <input type="text" class="otp-box" maxlength="1" aria-label="Second OTP digit" placeholder="0">
-                                    <input type="text" class="otp-box" maxlength="1" aria-label="Third OTP digit" placeholder="0">
-                                    <input type="text" class="otp-box" maxlength="1" aria-label="Fourth OTP digit" placeholder="0">
-                                    <input type="text" class="otp-box" maxlength="1" aria-label="Fifth OTP digit" placeholder="0">
-                                    <input type="text" class="otp-box" maxlength="1" aria-label="Sixth OTP digit" placeholder="0">
+                                    <input type="text" class="otp-box" maxlength="1" aria-label="First OTP digit"
+                                        placeholder="0">
+                                    <input type="text" class="otp-box" maxlength="1" aria-label="Second OTP digit"
+                                        placeholder="0">
+                                    <input type="text" class="otp-box" maxlength="1" aria-label="Third OTP digit"
+                                        placeholder="0">
+                                    <input type="text" class="otp-box" maxlength="1" aria-label="Fourth OTP digit"
+                                        placeholder="0">
+                                    <input type="text" class="otp-box" maxlength="1" aria-label="Fifth OTP digit"
+                                        placeholder="0">
+                                    <input type="text" class="otp-box" maxlength="1" aria-label="Sixth OTP digit"
+                                        placeholder="0">
                                 </div>
                                 <p class="resend" id="resendOtp">Resend OTP</p>
                             </div>
@@ -152,11 +162,15 @@
                     <tr>
                         <td><label for="User" id="user_type">User Type:</label></td>
                         <td>
-                            <input type="radio" id="farmer" name="user_type" value="Farmer" required> <label for="farmer">Farmer</label><br>
-                            <input type="radio" id="buyer" name="user_type" value="Buyer"> <label for="buyer">Buyer</label><br>
-                            <input type="radio" id="company" name="user_type" value="Company"> <label for="company">Company</label><br>
-                            <input type="radio" id="government" name="user_type" value="Government"> <label for="government">Government</label>
-                            
+                            <input type="radio" id="farmer" name="user_type" value="Farmer" required> <label
+                                for="farmer">Farmer</label><br>
+                            <input type="radio" id="buyer" name="user_type" value="Buyer"> <label
+                                for="buyer">Buyer</label><br>
+                            <input type="radio" id="company" name="user_type" value="Company"> <label
+                                for="company">Company</label><br>
+                            <input type="radio" id="government" name="user_type" value="Government"> <label
+                                for="government">Government</label>
+
                         </td>
                     </tr>
                 </tbody>
@@ -215,19 +229,19 @@
 
         document.getElementById('registerForm').addEventListener('submit', async function (e) {
             e.preventDefault();
-        
+
             let otpValue = "";
             otpInputs.forEach(input => otpValue += input.value);
             if (otpValue.length !== 6) {
                 alert("Please enter a valid 6-digit OTP.");
                 return;
             }
-        
+
             const formData = new FormData(this);
             const data = {};
             formData.forEach((value, key) => data[key] = value);
             data.otp = otpValue;
-        
+
             try {
                 const response = await fetch('http://localhost:3001/api/users/register', {
                     method: 'POST',
@@ -236,19 +250,19 @@
                     },
                     body: JSON.stringify(data),
                 });
-        
+
                 const result = await response.json();
                 if (response.ok) {
-                    localStorage.setItem("profileIcon",data.profileIcon);
+                    localStorage.setItem("profileIcon", data.profileIcon);
                     localStorage.setItem("username", data.username);
                     localStorage.setItem("userId", result.data.userid);
                     alert('User registered successfully!');
-                    
+
                     // Redirect to Main Page
                     window.location.href = "index.html";
                 }
-                
-                else {        
+
+                else {
                     alert('Error: ' + result.message);
                 }
             } catch (error) {
@@ -258,4 +272,5 @@
         });
     </script>
 </body>
+
 </html>
