@@ -162,6 +162,56 @@
             <span>✨ ప్రత్యేక ఆఫర్: బల్క్ డిస్కౌంట్లు అందుబాటులో ఉన్నాయి! ✨</span>
         </div>
     </div>
+
+    <div class="ads">
+        <h2>Farmer Ads - Pesticides & Equipment</h2>
+        <div class="ad-container">
+            <div class="ad"><img src="h-7.jpg" alt="Ad 1"></div>
+            <div class="ad"><img src="h-7.jpg" alt="Ad 2"></div>
+            <div class="ad"><img src="h-7.jpg" alt="Ad 3"></div>
+            <div class="ad"><img src="h-7.jpg" alt="Ad 4"></div>
+        </div>
+    </div>
+
+    <div class="gov-video">
+        <h2>Government Info & Video</h2>
+        <video autoplay muted loop playsinline>
+            <source src="mirchiyard.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+
+
+
+    <script>
+        // server.js
+        const express = require('express');
+        const multer = require('multer');
+        const path = require('path');
+
+        const app = express();
+        app.use(express.static('public'));
+
+        const storage = multer.diskStorage({
+            destination: 'public/uploads',
+            filename: (req, file, cb) => {
+                cb(null, 'govvideo.mp4'); // always overwrite with the latest video
+            }
+        });
+
+        const upload = multer({ storage });
+
+        app.post('/upload', upload.single('govVideo'), (req, res) => {
+            res.send('Video uploaded successfully.');
+        });
+
+        app.listen(3000, () => console.log('Server running on http://localhost:3000'));
+
+    </script>
+
+
+
     <script src="script.js"></script>
 </body>
 

@@ -1,147 +1,484 @@
-/* General styles */
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f4f4;
+    color: #333;
     display: flex;
 }
 
-/* Sidebar Navigation */
+html {
+    scroll-behavior: smooth;
+}
+
 .sidebar {
-    width: 250px;
-    background-color: #2c3e50;
-    color: white;
-    height: 100vh;
     position: fixed;
-    padding: 20px 0;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 6px 14px;
+    transition: .5s;
+}
+
+.sidebar.active {
+    width: 300px;
 }
 
 .sidebar .logo-menu {
-    text-align: center;
-    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 75px;
 }
 
-.sidebar .logo {
-    font-size: 20px;
-    font-weight: bold;
+.sidebar .logo-menu .logo {
+    font-size: 25px;
+    color: #5d1803;
+    pointer-events: none;
+    opacity: 0;
+    transition: .3s;
+}
+
+.sidebar.active .logo-menu .logo {
+    opacity: 1;
+    transition: .2s;
+}
+
+.sidebar .logo-menu .toggle-btn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.sidebar.active .logo-menu .toggle-btn {
+    left: 90%;
 }
 
 .sidebar .list {
+    margin-top: 10px;
+}
+
+.list .list-item {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    color: #fff;
+    width: 100%;
+    height: 50px;
+    margin: 5px 0;
+    line-height: 50px;
 }
 
-.sidebar .list li {
-    padding: 15px 20px;
-}
-
-.sidebar .list li a {
-    color: white;
+.list .list-item a {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    color: #fff;
     text-decoration: none;
-    font-size: 16px;
-    display: block;
+    border-radius: 10px;
+    white-space: nowrap;
+    transition: .4s;
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
 }
 
-.sidebar .list li.active a {
-    background-color: #34495e;
-    border-radius: 4px;
+.list .list-item a:hover {
+    background: rgba(66, 66, 66, 0.2);
 }
 
-.sidebar .list li a:hover {
-    background-color: #1abc9c;
-    border-radius: 4px;
+.list .list-item a i {
+    min-width: 50px;
+    display: flex;
+    height: 50px;
+    text-align: center;
+    color: #fff;
+    line-height: 50px;
 }
 
-/* Settings Container */
+.sidebar .link-name {
+    font-size: 20px;
+    opacity: 0;
+    pointer-events: none;
+    color: #fff;
+    transition: .3s;
+}
+
+.sidebar.active .link-name {
+    opacity: 1;
+    pointer-events: auto;
+    transition-delay: calc(.1s * var(--i));
+}
+
+/* Responsive Styles */
+
+/* For tablets and smaller screens */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 60px;
+        /* Make sidebar more compact on tablets */
+        padding: 6px 10px;
+    }
+
+    .sidebar.active {
+        width: 250px;
+        /* Adjust active width on tablets */
+    }
+
+    .sidebar .logo-menu .logo {
+        font-size: 20px;
+    }
+
+    .sidebar .list .list-item a {
+        font-size: 26px;
+        /* Smaller font size */
+        padding: 0 8px;
+    }
+
+    .sidebar .link-name {
+        font-size: 18px;
+    }
+}
+
+/* For mobile devices */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 50px;
+        /* Further reduce sidebar width on mobile */
+        padding: 6px 8px;
+    }
+
+    .sidebar.active {
+        width: 170px;
+        /* Adjust active width on mobile */
+    }
+
+    .sidebar .logo-menu .logo {
+        font-size: 18px;
+        /* Reduce logo font size */
+    }
+
+    .sidebar .list .list-item a {
+        font-size: 22px;
+        /* Reduce font size */
+        padding: 0 6px;
+    }
+
+    .sidebar .link-name {
+        font-size: 16px;
+    }
+
+    .sidebar .logo-menu .toggle-btn {
+        left: 50%;
+        /* Keep the toggle button position for mobile */
+    }
+}
+
+/* For very small mobile screens */
+@media (max-width: 480px) {
+    .sidebar {
+        width: 40px;
+        /* Further reduce width for small screens */
+        padding: 6px 6px;
+    }
+
+    .sidebar.active {
+        width: 150px;
+        /* Adjust active width on small mobile screens */
+    }
+
+    .sidebar .logo-menu .logo {
+        font-size: 16px;
+        /* Further reduce font size for the logo */
+    }
+
+    .sidebar .list .list-item a {
+        font-size: 18px;
+        /* Further reduce font size */
+        padding: 0 5px;
+    }
+
+    .sidebar .link-name {
+        font-size: 14px;
+    }
+
+    .sidebar .logo-menu .toggle-btn {
+        left: 50%;
+    }
+}
+
+/* Main Container */
 .settings-container {
-    margin-left: 270px;
-    padding: 20px;
-    width: calc(100% - 270px);
+    margin-left: 260px;
+    padding: 40px 60px;
+    width: calc(100% - 260px);
+    animation: fadeIn 1s ease;
 }
 
 .settings-container h1 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #2c3e50;
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #9A031E;
+    text-align: center;
 }
 
-/* Section Styles */
 .settings-section {
-    margin-bottom: 30px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    animation: slideUp 0.6s ease;
 }
 
 .settings-section h2 {
-    margin-bottom: 10px;
-    font-size: 18px;
-    color: #2c3e50;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+    border-left: 5px solid #9A031E;
+    padding-left: 10px;
 }
 
 .settings-section label {
     display: block;
-    margin-bottom: 10px;
-    font-size: 14px;
-    color: #555;
+    margin: 15px 0;
+    font-size: 16px;
 }
 
-.settings-section input,
-.settings-section textarea,
-.settings-section select {
+.settings-section input[type="text"],
+.settings-section input[type="email"],
+.settings-section input[type="password"],
+.settings-section input[type="file"],
+.settings-section input[type="number"],
+.settings-section select,
+.settings-section textarea {
     width: 100%;
-    padding: 8px;
-    font-size: 14px;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
     margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
+    transition: border 0.3s ease;
 }
 
-.settings-section button {
-    padding: 10px 20px;
-    font-size: 14px;
-    color: white;
-    background-color: #2c3e50;
-    border: none;
-    border-radius: 4px;
+.settings-section input:focus,
+.settings-section select:focus,
+.settings-section textarea:focus {
+    border-color: #9A031E;
+    outline: none;
+}
+
+.settings-section input[type="checkbox"],
+.settings-section input[type="radio"] {
+    margin-right: 8px;
+}
+
+/* Enhance inputs and labels */
+.settings-section label:hover {
+    color: #9A031E;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.settings-section input[type="text"],
+.settings-section input[type="email"],
+.settings-section input[type="password"],
+.settings-section input[type="file"],
+.settings-section input[type="number"],
+.settings-section select,
+.settings-section textarea {
+    background-color: #fdfdfd;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.settings-section input:hover,
+.settings-section select:hover,
+.settings-section textarea:hover {
+    box-shadow: 0 0 0 2px #9A031E33;
+    transform: scale(1.01);
+}
+
+/* Section hover effect */
+.settings-section:hover {
+    border: 1px solid #ccc;
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+/* Toggle-style checkboxes */
+.settings-section input[type="checkbox"] {
+    appearance: none;
+    width: 40px;
+    height: 20px;
+    background: #ccc;
+    border-radius: 20px;
+    position: relative;
+    outline: none;
     cursor: pointer;
-    margin-top: 10px;
+    transition: background 0.3s;
 }
 
-.settings-section button:hover {
-    background-color: #1abc9c;
+.settings-section input[type="checkbox"]::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    top: 1px;
+    left: 1px;
+    transition: transform 0.3s ease;
 }
 
-/* Save Settings Button */
-#save-settings-btn {
-    padding: 10px 20px;
-    background-color: #1abc9c;
+.settings-section input[type="checkbox"]:checked {
+    background: #028090;
+}
+
+.settings-section input[type="checkbox"]:checked::before {
+    transform: translateX(20px);
+}
+
+/* File input custom style */
+input[type="file"]::-webkit-file-upload-button {
+    background-color: #028090;
     color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #05668d;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #9A031E;
+    border-radius: 10px;
+    border: 2px solid #f1f1f1;
+}
+
+/* Focus glow */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 5px #9A031E80;
+}
+
+/* Button pulse effect */
+button:active {
+    transform: scale(0.97);
+    box-shadow: 0 0 0 2px #05668d33 inset;
+}
+
+/* Buttons */
+button {
+    background-color: #9A031E;
+    color: white;
+    padding: 10px 18px;
     font-size: 16px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
+    margin-top: 15px;
     cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #D00028;
+    transform: scale(1.05);
+}
+
+/* Save Button */
+#save-settings-btn {
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+    background-color: #05668d;
 }
 
 #save-settings-btn:hover {
-    background-color: #16a085;
+    background-color: #028090;
 }
 
-/* Media Query for Responsive Design */
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     .sidebar {
-        width: 200px;
+        width: 100%;
+        height: auto;
+        position: relative;
     }
 
     .settings-container {
-        margin-left: 220px;
-        width: calc(100% - 220px);
+        margin-left: 0;
+        padding: 20px;
+        width: 100%;
     }
+}
 
-    .sidebar .list li a {
-        font-size: 14px;
-    }
+.form-group {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }

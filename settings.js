@@ -1,3 +1,13 @@
+// Side Bar Active
+const sidebar = document.querySelector('.sidebar');
+const toggleBtn = document.querySelector('.toggle-btn');
+
+if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+    });
+}
+
 // Global Settings Object
 const settings = {
     userAccount: {

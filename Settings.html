@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings | Guntur Mirchi Yard</title>
     <link rel="stylesheet" href="settings.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="icon" href="assets/mirchi.ico" type="image/x-icon">
     <link rel="icon" href="assets/mirchi.png" type="image/png">
     <script type="application/ld+json">
@@ -21,41 +22,133 @@
 
 <body>
     <!-- Sidebar Navigation -->
-    <nav class="sidebar">
+    <nav class="sidebar" aria-label="Sidebar Navigation">
         <div class="logo-menu">
             <h2 class="logo">Guntur Mirchi Yard</h2>
+            <i class='bx bx-menu toggle-btn'></i>
         </div>
+
         <ul class="list">
-            <li><a href="Dashboard.html">Dashboard</a></li>
-            <li><a href="Profile.html">Profile</a></li>
-            <li><a href="Farmer.html">Farmer</a></li>
-            <li><a href="Buyer.html">Buyer</a></li>
-            <li><a href="Company.html">Company</a></li>
-            <li><a href="GOVT.html">Government</a></li>
-            <li><a href="History.html">History</a></li>
-            <li class="active"><a href="Settings.html">Settings</a></li>
+            <li class="list-item active">
+                <a href="Dashboard.html">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link-name">Dashboard</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="Profile.html">
+                    <i class='bx bxs-user-circle'></i>
+                    <span class="link-name">Profile</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="Farmer.html">
+                    <i class='bx bxs-user-detail'></i>
+                    <span class="link-name">Farmer</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="Buyer.html">
+                    <i class='bx bxs-user-detail'></i>
+                    <span class="link-name">Buyer</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="Company.html">
+                    <i class='bx bxs-user-detail'></i>
+                    <span class="link-name">Company</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="GOVT.html">
+                    <i class='bx bxs-user-detail'></i>
+                    <span class="link-name">Government</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="#">
+                    <i class='bx bx-history'></i>
+                    <span class="link-name">History</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="Settings.html">
+                    <i class='bx bx-cog'></i>
+                    <span class="link-name">Settings</span>
+                </a>
+            </li>
         </ul>
     </nav>
 
+
     <!-- Main Settings Section -->
     <div class="settings-container">
-        <h1>Website Settings</h1>
+        <h1>Guntur Mirchi Yard Settings Page</h1>
 
         <!-- User Account Settings -->
         <section class="settings-section">
             <h2>User Account Settings</h2>
-            <label>Name: <input type="text" id="userName" placeholder="Enter your name"></label>
-            <label>Email: <input type="email" id="userEmail" placeholder="Enter your email"></label>
-            <label>Phone Number: <input type="text" id="userPhone" placeholder="Enter your phone number"></label>
-            <label>Profile Picture: <input type="file" id="profilePicture"></label>
+
+            <div class="form-group">
+                <label for="userName">Full Name:</label>
+                <input type="text" id="userName" placeholder="Enter your full name">
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Choose a username">
+            </div>
+
+            <div class="form-group">
+                <label for="userEmail">Primary Email:</label>
+                <input type="email" id="userEmail" placeholder="Enter your primary email">
+            </div>
+
+            <div class="form-group">
+                <label for="altEmail">Alternate Email:</label>
+                <input type="email" id="altEmail" placeholder="Enter alternate email (optional)">
+            </div>
+
+            <div class="form-group">
+                <label for="recoveryEmail">Recovery Email:</label>
+                <input type="email" id="recoveryEmail" placeholder="Recovery email (optional)">
+            </div>
+
+            <div class="form-group">
+                <label for="userPhone">Phone Number:</label>
+                <input type="text" id="userPhone" placeholder="Enter your phone number">
+            </div>
+
+            <div class="form-group">
+                <label for="userAddress">Address:</label>
+                <textarea id="userAddress" placeholder="Enter your address"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="userBio">Bio/About Me:</label>
+                <textarea id="userBio" placeholder="Write something about you..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob">
+            </div>
+
+            <div class="form-group">
+                <label for="profilePicture">Profile Picture:</label>
+                <input type="file" id="profilePicture">
+            </div>
         </section>
+
 
         <!-- Password Management -->
         <section class="settings-section">
             <h2>Password Management</h2>
-            <label>Current Password: <input type="password" id="current-password" placeholder="Enter current password"></label>
+            <label>Current Password: <input type="password" id="current-password"
+                    placeholder="Enter current password"></label>
             <label>New Password: <input type="password" id="new-password" placeholder="Enter new password"></label>
-            <label>Confirm New Password: <input type="password" id="confirm-password" placeholder="Re-enter new password"></label>
+            <label>Confirm New Password: <input type="password" id="confirm-password"
+                    placeholder="Re-enter new password"></label>
             <button id="change-password-btn">Update Password</button>
         </section>
 
@@ -103,7 +196,8 @@
         <section class="settings-section">
             <h2>Payment and Billing</h2>
             <label>Saved Payment Methods: <button id="managePayments">Manage</button></label>
-            <label>Billing Address: <textarea id="billingAddress" placeholder="Enter your billing address"></textarea></label>
+            <label>Billing Address: <textarea id="billingAddress"
+                    placeholder="Enter your billing address"></textarea></label>
             <label>Transaction History: <button id="viewTransactions">View</button></label>
         </section>
 
