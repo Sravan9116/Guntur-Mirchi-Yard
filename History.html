@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transaction History</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="assets/mirchi.ico" type="image/x-icon">
+    <link rel="icon" href="assets/mirchi.png" type="image/png">
+    <link rel="stylesheet" href="History.css">
+    <script type="application/ld+json">
+                {
+                  "@context": "https://schema.org",
+                  "@type": "Organization",
+                  "url": "http://localhost/SIH_2024_website/History.html",
+                  "logo": "http://localhost/SIH_2024_website/assets/mirchi.png"
+                }
+    </script>
+</head>
+
+<body>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" aria-label="Sidebar Navigation">
+        <div class="logo-menu">
+            <h2 class="logo">Guntur Mirchi Yard</h2>
+            <i class='bx bx-menu toggle-btn'></i>
+        </div>
+
+        <ul class="list">
+            <li class="list-item active">
+                <a href="Dashboard.html">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link-name">Dashboard</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="Profile.html">
+                    <i class='bx bxs-user-circle'></i>
+                    <span class="link-name">Profile</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="Farmer.html">
+                    <i class='bx bxs-user-detail'></i>
+                    <span class="link-name">Farmer</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="Buyer.html">
+                    <i class='bx bxs-user-detail'></i>
+                    <span class="link-name">Buyer</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="Company.html">
+                    <i class='bx bxs-user-detail'></i>
+                    <span class="link-name">Company</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="GOVT.html">
+                    <i class='bx bxs-user-detail'></i>
+                    <span class="link-name">Government</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="History.html">
+                    <i class='bx bx-history'></i>
+                    <span class="link-name">History</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="Settings.html">
+                    <i class='bx bx-cog'></i>
+                    <span class="link-name">Settings</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Navbar -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <ul>
+            <li><a href="Main Page.html">Home</a></li>
+            <li><a href="about us.html">About</a></li>
+            <li><a href="Profile.html">Profile</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!--Search Bar-->
+    <div class="search-bar">
+        <div class="search-input-wrapper">
+            <input type="text" id="searchInput" placeholder="Search transactions...">
+            <div class="more-options">
+                <i class="fas fa-ellipsis-v"></i>
+                <div class="options-dropdown">
+                    <div class="break"><a href="about us.html">Get Help</a></div>
+                    <div class="break"><a href="Contact.html">Contact Support</a></div>
+                </div>
+            </div>
+        </div>
+        <button id="searchButton" class="search-button">
+            <i class="fas fa-search"></i> Search
+        </button>
+    </div>
+
+
+    <script>
+        const moreOptions = document.querySelector('.more-options');
+        const optionsDropdown = document.querySelector('.options-dropdown');
+
+        moreOptions.addEventListener('click', (event) => {
+            event.stopPropagation();
+            optionsDropdown.style.display = optionsDropdown.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.addEventListener('click', () => {
+            optionsDropdown.style.display = 'none';
+        });
+    </script>
+
+    <div class="filter-section">
+        <div class="filter-wrapper">
+            <button class="filter-btn" data-filter="status"><i class="fas fa-check-circle"></i> Status</button>
+            <div class="filter-dropdown">
+                <div>Success</div>
+                <div>Pending</div>
+                <div>Failed</div>
+            </div>
+        </div>
+        <div class="filter-wrapper">
+            <button class="filter-btn" data-filter="payment-method"><i class="fas fa-credit-card"></i>Payment
+                Method</button>
+            <div class="filter-dropdown">
+                <div>GPay</div>
+                <div>PhonePe</div>
+                <div>Card</div>
+                <div>Cash</div>
+            </div>
+        </div>
+
+        <div class="filter-wrapper">
+            <button class="filter-btn" data-filter="date"><i class="fas fa-calendar-alt"></i> Date</button>
+            <div class="filter-dropdown">
+                <div>Today</div>
+                <div>This Week</div>
+                <div>This Month</div>
+                <div>Custom Date</div>
+            </div>
+        </div>
+        <div class="filter-wrapper">
+            <button class="filter-btn" data-filter="amount"><i class="fas fa-rupee-sign"></i> Amount</button>
+            <div class="filter-dropdown">
+                <div>Below ₹100</div>
+                <div>₹100 - ₹1000</div>
+                <div>₹1000+</div>
+            </div>
+        </div>
+        <div class="filter-wrapper">
+            <button class="filter-btn" data-filter="payment-type"><i class="fas fa-exchange-alt"></i> Payment
+                Type</button>
+            <div class="filter-dropdown">
+                <div>Sent</div>
+                <div>Received</div>
+                <div>Refunded</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Transaction History</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Payment Method</th>
+                    <th>Payment Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2025-05-10</td>
+                    <td>Payment to ABC Store</td>
+                    <td>₹1,250.00</td>
+                    <td><span class="status success">Success</span></td>
+                    <td>UPI</td>
+                    <td>Sent</td>
+                </tr>
+                <tr>
+                    <td>2025-05-09</td>
+                    <td>UPI Transfer</td>
+                    <td>₹500.00</td>
+                    <td><span class="status failed">Failed</span></td>
+                    <td>Credit Card</td>
+                    <td>Received</td>
+                </tr>
+                <tr>
+                    <td>2025-05-08</td>
+                    <td>Electricity Bill</td>
+                    <td>₹1,100.00</td>
+                    <td><span class="status pending">Pending</span></td>
+                    <td>Net Banking</td>
+                    <td>Sent</td>
+                </tr>
+                <tr>
+                    <td>2025-05-07</td>
+                    <td>Recharge - Mobile</td>
+                    <td>₹199.00</td>
+                    <td><span class="status success">Success</span></td>
+                    <td>Gpay</td>
+                    <td>Received</td>
+                </tr>
+                <tr>
+                    <td>2025-05-06</td>
+                    <td>Payment to XYZ Store</td>
+                    <td>₹2,500.00</td>
+                    <td><span class="status success">Success</span></td>
+                    <td>PhonePe</td>
+                    <td>Sent</td>
+                </tr>
+                <tr>
+                    <td>2025-05-05</td>
+                    <td>Payment to DEF Store</td>
+                    <td>₹1,000.00</td>
+                    <td><span class="status success">Success</span></td>
+                    <td>UPI</td>
+                    <td>Received</td>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        // Sidebar Toggle
+        const sidebar = document.querySelector('.sidebar');
+        const toggleBtn = document.querySelector('.toggle-btn');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+            });
+        }
+
+        // Search Functionality
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const tableRows = document.querySelectorAll('tbody tr');
+
+        const performSearch = () => {
+            const query = searchInput.value.toLowerCase();
+            tableRows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const rowText = Array.from(cells).map(cell => cell.textContent.toLowerCase()).join(' ');
+                row.style.display = rowText.includes(query) ? '' : 'none';
+            });
+        };
+
+        searchButton.addEventListener('click', performSearch);
+
+        searchInput.addEventListener('input', () => {
+            if (searchInput.value === '') {
+                tableRows.forEach(row => row.style.display = '');
+            }
+        });
+
+        searchInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // Filter Functionality
+        const filterWrappers = document.querySelectorAll('.filter-wrapper');
+
+        filterWrappers.forEach(wrapper => {
+            const btn = wrapper.querySelector('.filter-btn');
+            const dropdown = wrapper.querySelector('.filter-dropdown');
+
+            btn.addEventListener('click', (event) => {
+                event.stopPropagation();
+
+                document.querySelectorAll('.filter-dropdown').forEach(d => {
+                    if (d !== dropdown) d.style.display = 'none';
+                });
+
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            });
+
+            dropdown.querySelectorAll('div').forEach(option => {
+                option.addEventListener('click', () => {
+                    const filterValue = option.textContent.toLowerCase();
+                    const filterType = btn.dataset.filter;
+                    const today = new Date();
+
+                    tableRows.forEach(row => {
+                        let show = true;
+
+                        if (filterType === 'status') {
+                            const statusCell = row.querySelector('.status');
+                            show = statusCell && statusCell.textContent.toLowerCase().includes(filterValue);
+                        }
+
+                        if (filterType === 'amount') {
+                            const amountCell = row.querySelector('td:nth-child(3)');
+                            if (amountCell) {
+                                const amountValue = parseFloat(amountCell.textContent.replace(/[₹,]/g, ''));
+                                if (filterValue.includes('below')) show = amountValue < 100;
+                                else if (filterValue.includes('100 - ₹1000')) show = amountValue >= 100 && amountValue <= 1000;
+                                else if (filterValue.includes('₹1000+')) show = amountValue > 1000;
+                            }
+                        }
+
+                        if (filterType === 'date') {
+                            const dateCell = row.querySelector('td:nth-child(1)');
+                            if (dateCell) {
+                                const rowDate = new Date(dateCell.textContent);
+                                if (filterValue.includes('today')) show = rowDate.toDateString() === today.toDateString();
+                                else if (filterValue.includes('this week')) {
+                                    const weekStart = new Date(today.setDate(today.getDate() - today.getDay()));
+                                    const weekEnd = new Date(weekStart);
+                                    weekEnd.setDate(weekStart.getDate() + 6);
+                                    show = rowDate >= weekStart && rowDate <= weekEnd;
+                                } else if (filterValue.includes('this month')) {
+                                    show = rowDate.getMonth() === today.getMonth() &&
+                                        rowDate.getFullYear() === today.getFullYear();
+                                }
+                            }
+                        }
+
+                        if (filterType === 'payment-method') {
+                            const paymentMethodCell = row.querySelector('td:nth-child(5)');
+                            show = paymentMethodCell && paymentMethodCell.textContent.toLowerCase().includes(filterValue);
+                        }
+
+                        if (filterType === 'payment-type') {
+                            const paymentTypeCell = row.querySelector('td:nth-child(6)');
+                            show = paymentTypeCell && paymentTypeCell.textContent.toLowerCase().includes(filterValue);
+                        }
+
+                        row.style.display = show ? '' : 'none';
+                    });
+
+                    dropdown.style.display = 'none';
+                });
+            });
+        });
+
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.filter-dropdown').forEach(dropdown => {
+                dropdown.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>
